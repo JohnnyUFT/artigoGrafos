@@ -1,0 +1,256 @@
+\documentclass{endm}
+\usepackage{endmmacro}
+\usepackage{graphicx}
+\usepackage{graphics,subfigure}
+\usepackage[utf8]{inputenc} % PACOTE APRA ACENTUAÇÃO EM PORTUGUÊS
+\usepackage[portuges]{babel} % PACOTE APRA ACENTUAÇÃO EM PORTUGUÊS
+\usepackage{pdflscape}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage[table]{xcolor}
+%\usepackage{slashbox} %dividir a célula da tabela em diagonal
+\usepackage{ textcomp }%para o símbolo de indeterminação, usado em uma tabela
+\usepackage{amsthm}
+\usepackage{amsmath,amsfonts}
+
+% The following is enclosed to allow easy detection of differences in
+% ascii coding.
+% Upper-case    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+% Lower-case    a b c d e f g h i j k l m n o p q r s t u v w x y z
+% Digits        0 1 2 3 4 5 6 7 8 9
+% Exclamation   !           Double quote "          Hash (number) #
+% Dollar        $           Percent      %          Ampersand     &
+% Acute accent  '           Left paren   (          Right paren   )
+% Asterisk      *           Plus         +          Comma         ,
+% Minus         -           Point        .          Solidus       /
+% Colon         :           Semicolon    ;          Less than     <
+% Equals        =           Greater than >          Question mark ?
+% At            @           Left bracket [          Backslash     \
+% Right bracket ]           Circumflex   ^          Underscore    _
+% Grave accent  `           Left brace   {          Vertical bar  |
+% Right brace   }           Tilde        ~
+
+\newcommand{\Nat}{{\mathbb N}}
+\newcommand{\Real}{{\mathbb R}}
+\def\lastname{Please list your Lastname here}
+
+\definecolor{darkseagreen}{RGB}{143, 188, 143}
+\definecolor{Blue}{rgb}{0,0,0.9}
+\definecolor{cinzaFraco}{rgb}{0.9,0.9,0.9}
+
+\newcommand{\cinza}{\cellcolor[rgb]{.8,.8,.8}}
+\newcommand{\cinzaFraco}{\cellcolor[rgb]{.9,.9,.9}}
+\newcommand{\azul}{\cellcolor[rgb]{0,.5,.8}}
+\newcommand{\verde}{\cellcolor[rgb]{.2,.8,.5}}
+\newcommand{\verdeu}{\cellcolor[rgb]{0,.8,.3}}
+\newcommand{\verded}{\cellcolor[rgb]{0,.8,.1}}
+\newcommand{\marro}{\cellcolor[rgb]{.8,.5,.2}}
+\newcommand{\vermel}{\cellcolor[rgb]{.5,0,.2}}
+\newcommand{\overde}{\cellcolor[rgb]{.4,.8,.5}}
+
+\newtheorem{teo}{Teorema}[section]
+\newtheorem{defi}[teo]{Definition}
+\newtheorem{lema}[teo]{Lemma}
+%\newtheorem{cor}[teo]{Corollary}
+%\newtheorem{prop}[teo]{Proposition}
+\newtheorem{obs}[teo]{Observation}
+\newtheorem{exemplo}[teo]{Example}
+\newtheorem{algo}[teo]{Algorithm}
+
+\begin{document}
+
+% DO NOT REMOVE: Creates space for Elsevier logo, ScienceDirect logo
+% and ENDM logo
+\begin{verbatim}\end{verbatim}\vspace{2.5cm}
+
+\begin{frontmatter}
+
+% melhorar este título aqui
+\title{Rede de Colaboração Bibliográfica e as características de Redes Small World}
+
+
+\author{Tanilson Dias dos Santos,\thanksref{tanilson}}
+\author{Johnny Gomes Pereira\thanksref{johnny}}
+\address{Universidade Federal do Tocantins, Tocantins, Brasil}
+
+
+\thanks[tanilson]{Email:
+   {\texttt{\normalshape tanilson.dias@uft.edu.br}}}
+\thanks[johnny]{Email:
+   {\texttt{\normalshape johnnygomes@uft.edu.br}}}
+%%
+
+\begin{abstract}
+Neste trabalho procurou-se obter algumas considerações sobre grafos aleatórios, sendo estes gerados a partir de redes de colaboração bibliográfica. A princípio, apresenta-se um apanhado geral de introdução á teoria dos grafos e á revisão da literatura, dito estado da arte. Logo na sequência tem-se também uma rápida introdução aos estudos sobre Redes Small World e suas características mais proeminentes. Neste trabalho os estudos referentes á teoria de grafos engloba principalmente o que diz respeito á teoria espectral dos grafos, dados a partir da análise de matriz de adjacência e laplaciana, e conectividade algébrica. Seguindo com os estudos de redes Small World, tem também...
+\end{abstract}
+
+% refazer palavras-chaves
+\begin{keyword}
+Teoria dos Grafos, Conectividade Algébrica, Matriz Laplaciana.
+\end{keyword}
+
+\end{frontmatter}
+
+
+% parte principal do artigo - CORPO - começa aqui
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}\label{intro}
+% Trabalhar melhor esta introdução após concluir a primeira parte do projeto
+% refazer, incrementalmente, esta introdução, bem como tópicos (seções e subseções) diversos.
+A teoria dos grafos é uma área de estudo que vem crescendo desde o século XVII, após a publicação dos estudos de Leonhard Euler\cite{audemir01:MSc}. Ultimamente vem surgindo interesse por uma área específica dentro da teoria dos grafos: A Teoria Espectral dos Grafos. Antes disso, vamos rever alguns conceitos introdutórios dos estudos dos grafos.
+
+
+
+
+    \\
+
+    No artigo de \cite{nair01:MSc},
+
+    \\
+
+    A nível organizacional, o aumento do diálogo entre os diferentes setores produtivos estimula a padronização dos conhecimentos estratégicos para atingir a excelência. Todavia, a valorização de fatores subjetivos exige a precisão e a definição da gestão inovadora da qual fazemos parte. Pensando mais a longo prazo, a expansão dos mercados mundiais agrega valor ao estabelecimento do processo de comunicação como um todo. O empenho em analisar a mobilidade dos capitais internacionais maximiza as possibilidades por conta do investimento em reciclagem técnica.
+
+Na Seção~\ref{sec:smallWorldModel}, apresentamos algo sobre a bibliografia. Em seguida, na Seção~\ref{sec:OurExperiments} apresentamos nossos experimentos. Finalmente, apresentamos as conclusões na seção~\ref{sec:conclusions}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Revisão Bibliográfica} \label{sec:basicConcepts}
+% Entrada para explicar o por quê do artigo e com base em quê (citar referências = embasar o trabalho)
+
+ Percebemos, cada vez mais, que a constante divulgação das informações obstaculiza a apreciação da importância dos procedimentos normalmente adotados. No mundo atual, a competitividade nas transações comerciais ainda não demonstrou convincentemente que vai participar na mudança dos modos de operação convencionais. O que temos que ter sempre em mente é que o consenso sobre a necessidade de qualificação possibilita uma melhor visão global do fluxo de informações, \cite{Diestel}, \cite{fan2006}, \cite{newman2010} and  \cite{Molitierno}.
+
+
+\subsection{Teoria dos Grafos, uma introdução}
+% discorrer sobre toda a introdução a teoria dos grafos
+
+% Expor definições como subseções assim como teoremas e lemas, etc...
+Formalmente um grafo é uma estrutura G = (V, E) , onde V é um conjunto finito e não vazio cujos elementos são denominados vértices e E é um conjunto de subconjuntos a dois elementos de V, os quais são denominados arestas. V e E indicam, respectivamente, o número de vértices e o número de arestas de G. Quando V é um conjunto unitário e E = Ø dizemos que G é um grafo trivial. % primeira definição da teoria dos grafos.
+
+    % Definição de Grafo Conexo
+    Grafo conexo: Diz-se que G é um grafo conexo quando existe um caminho ligando cada par de vértices. Em caso contrário, G é denominado desconexo.
+
+
+\section{Modelos desenvolvidos e estudados}\label{sec:smallWorldModel}
+% Devo deixar esta seção como está? Digo, ela deve mesmo existir?
+
+Em \cite{fan2006},Por conseguinte, a complexidade dos estudos efetuados agrega valor ao estabelecimento das direções preferenciais no sentido do progresso. Percebemos, cada vez mais, que a valorização de fatores subjetivos causa impacto indireto na reavaliação do fluxo de informações. A prática cotidiana prova que a mobilidade dos capitais internacionais obstaculiza a apreciação da importância dos níveis de motivação departamental.
+
+          Neste sentido, o comprometimento entre as equipes prepara-nos para enfrentar situações atípicas decorrentes do levantamento das variáveis envolvidas. Acima de tudo, é fundamental ressaltar que o desafiador cenário globalizado exige a precisão e a definição das diversas correntes de pensamento. Por outro lado, o aumento do diálogo entre os diferentes setores produtivos auxilia a preparação e a composição das formas de ação. Ainda assim, existem dúvidas a respeito de como a valorização de fatores subjetivos promove a alavancagem das condições inegavelmente apropriadas. No mundo atual, a percepção das dificuldades possibilita uma melhor visão global do investimento em reciclagem técnica.
+
+
+%FIGURA MODELO NW WS COMENTADA
+\input{includes/include-img/nw-ws.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Experimentos e Ambiente}\label{sec:OurExperiments}
+% o que colocarei aqui mesmo?
+
+\subsection{Softwares e Bibliotecas}
+% nesta subseção descreve-se as ferramentas utilizadas (softwares, bibliotecas, ...),
+
+Felizmente hoje dispõe-se de diversas ferramentas que auxiliam no desenvolvimento e pesquisa no que tange á Teoria dos Grafos e Algoritmos correlacionados. Apresenta-se aqui alguns softwares e bibliotecas comumente utilizadas e de distribuição gratuita.
+% blá blá blá blá
+% ...
+Sagemath:
+
+\textbf{\emph{Social Network Visualizer} (SocNetV):} Software descrito por \cite{tanilson01:MSc}, permite a obtenção de grafos a partir de \emph{urls}, recurso este chamado comumente de \emph{web crawler} ou \emph{spider}. Possui licença sob termos da \emph{GNU Free Documentation License} e, por se tratar de um software para desktop, pode ser facilmente baixado através de \url{http://socnetv.sourceforge.net/}\footnotesize{Acessado em 20 de Setembro de 2016} estando disponível para plataformas diversas, tais como: Windows, macOS, e Linux. Apesar de o software ser bastante interativo, este ainda possui uma documentação abrangente e como já foi dito, com ele é possivel extrair grafos através de urls bem como trabalhar com bases de dados importadas em diferentes formatos, a saber: pajek, lista de adjacências, GraphML, *.dl e *.dot, além de exportar para diversos formatos. Com este software é possível % listar usabilidade do socnet aqui.
+
+Cytoscape:
+
+% Ferramentas python
+% Python + Numpy + NetworkX, etc...
+
+Entre outras ferramentas que não foram utilizadas neste trabalho também destacam-se:
+% Esta: com um breve resumo, tipo de licença, etc...
+
+% Aquela: com um breve resumo, tipo de licença, etc...
+
+% Breve considerações sobre ferramental. (Desnecessário, talvez)
+
+
+Aqui seria explicada a metodologia utilizada provavelmente com um quadro comparativo de resultados.
+% Aqui seria explicada a metodologia utilizada provavelmente com um quadro comparativo de resultados.
+% Parte será desenvolvida agora e o restante virá na segunda metade do semestre.
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Metodologia}
+
+   Todavia, o novo modelo estrutural aqui preconizado facilita a criação das posturas dos órgãos dirigentes com relação às suas atribuições. Por conseguinte, o julgamento imparcial das eventualidades assume importantes posições no estabelecimento do retorno esperado a longo prazo. O cuidado em identificar pontos críticos na hegemonia do ambiente político estende o alcance e a importância do sistema de formação de quadros que corresponde às necessidades. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a competitividade nas transações comerciais afeta positivamente a correta previsão das diretrizes de desenvolvimento para o futuro. Gostaria de enfatizar que a contínua expansão de nossa atividade deve passar por modificações independentemente das regras de conduta normativas.
+
+          Não obstante, a determinação clara de objetivos é uma das consequências dos modos de operação convencionais. É importante questionar o quanto a execução dos pontos do programa aponta para a melhoria dos procedimentos normalmente adotados. As experiências acumuladas demonstram que o fenômeno da Internet representa uma abertura para a melhoria das condições financeiras e administrativas exigidas. A certificação de metodologias que nos auxiliam a lidar com a adoção de políticas descentralizadoras agrega valor ao estabelecimento dos paradigmas corporativos. Neste sentido, o comprometimento entre as equipes maximiza as possibilidades por conta dos índices pretendidos.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}\label{sec:conclusions}
+
+ É claro que a mobilidade dos capitais internacionais prepara-nos para enfrentar situações atípicas decorrentes das novas proposições. Pensando mais a longo prazo, a revolução dos costumes apresenta tendências no sentido de aprovar a manutenção de alternativas às soluções ortodoxas. Assim mesmo, a estrutura atual da organização ainda não demonstrou convincentemente que vai participar na mudança do impacto na agilidade decisória. Percebemos, cada vez mais, que a consulta aos diversos militantes talvez venha a ressaltar a relatividade dos conhecimentos estratégicos para atingir a excelência.
+
+          Podemos já vislumbrar o modo pelo qual a crescente influência da mídia pode nos levar a considerar a reestruturação do orçamento setorial. Nunca é demais lembrar o peso e o significado destes problemas, uma vez que a constante divulgação das informações acarreta um processo de reformulação e modernização do processo de comunicação como um todo. O que temos que ter sempre em mente é que o início da atividade geral de formação de atitudes não pode mais se dissociar do remanejamento dos quadros funcionais.
+
+% Parte final do artigo, aqui. (Bibliografia, anexos, agradecimentos, ...)
+
+
+% Agradecimentos
+\footnotesize{
+\textbf{Acknowledgement:} The authors gratefully acknowledge to Science of Computation/UFT Curse.}
+\vspace{-5pt}
+
+% Bibliografia
+\bibliographystyle{apalike} % --- define o estilo das citações dentro do texto (alpha, plain, siam)
+\bibliography{biblio}
+
+
+% --- REFERÊNCIAS DIRETO NO DOC PRINCIPAL,
+% --- ALGUMAS DESSAS REFERÊNCIAS PODEM SER ÚTEIS A MINHA PESQUISA
+% --- POR ISSO A INTENÇÃO DE PRESERVÁ-LAS TAL COMO ESTÃO
+
+%\bibitem{mohar} Mohar, B.
+%  \emph{The Laplacian Spectrum of Graphs}. Graph Theory, Combinatorics, and Applications (1991) 871-898.
+
+
+%\bibitem{Molitierno} Molitierno, J. J.
+%   \emph{Applications of Combinatorial Matrix Theory to Laplacian Matrices of Graphs}. Chapman and %Hall/CRC, (2012).
+
+
+%\bibitem{networkx} NetworkX http://networkx.github.io/
+
+%\bibitem{newman2010} \emph{Networks: An Introduction}, Oxford University Press, Inc., New York, (2010).
+
+
+%\bibitem{newmanAndWatts1999} Newman, M. E. J.; Watts,  D. J.
+%   \emph{Renormalization group analysis of the small-world network model}. Physics Letters A, \textbf{263} %(1999) 341-346.
+
+
+%\bibitem{newman2000} Newman, M. E. J.
+%   \emph{Models of the Small World, a Review}. Santa Fe Institute, 2000.
+
+
+%\bibitem {Oliphant} Oliphant, T.
+%   \emph{Guide To NumPy}. Trelgol Publishing, USA, (2006).
+
+
+%\bibitem {Santos} Santos, T. D. dos.
+%   \emph{Conectividade alg\'ebrica em grafos aleat\'orios}. Disserta\c c\~ao de Mestrado. Mestrado em Sistemas e Computa\c c\~ao, Instituto Militar de Engenharia, (2014).
+
+
+%\bibitem{Christian2014} Staudt, C. L. el al.
+%   \emph{NetworKit: An Interactive Tool Suite for High-Performance Network Analysis},
+%Institute of Theoretical Informatics, Karlsruhe Institute of Technology (KIT), (2014).
+
+
+%\bibitem{watts1998} Watts, D. J.; Strogatz, S. H.
+%   \emph{Collective dynamics of {`}small-world{'} networks}, Nature, \textbf{393} (1998) 440--442, 6684.
+
+%\bibitem{Zhan} Zhan, C. et al.
+%   \emph{On the distributions of Laplacian eigenvalues versus node degrees in complex networks}, Physica A %\textbf{389} (2010) 1779-1788.
+
+%\end{thebibliography}
+
+
+
+\end{document}
